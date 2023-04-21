@@ -61,4 +61,18 @@ public class TodoService {
     return retrieve(entity.getUserId());
   }
 
+  public List<TodoEntity> delete(final TodoEntity entity) {
+    validate(entity);
+    try {
+      repository.delete(entity);
+    } catch(Exception e) {
+      log.error("error deleting entity ", entity.getId(), e);
+      // Send exception to the controller. 
+      // It returns a new exception object without returning e 
+      // to encapsulate the logic inside the database.
+      throw new RuntimeException("error deleting entity " + entity.getId());
+    }
+    return retrieve(entity.getUserId());
+  }
+
 }
