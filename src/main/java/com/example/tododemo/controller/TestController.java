@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.tododemo.dto.ResponseDTO;
 import com.example.tododemo.dto.TestRequestBodyDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("test")
@@ -33,6 +37,14 @@ public class TestController {
   @GetMapping("/testRequestBody")
   public String testControllerRequestBody(@RequestBody TestRequestBodyDTO testRequestBodyDTO) {
     return "Hello World! ID " + testRequestBodyDTO.getId() + " Message : " + testRequestBodyDTO.getMessage();
+  }
+
+  @GetMapping("/testResponseDTO")
+  public ResponseDTO<String> testControllerResponseBody() {
+    List<String> list = new ArrayList<>();
+    list.add("Hello World! I'm ResponseDTO");
+    ResponseDTO<String> response = ResponseDTO.<String>builder().data(list).build();
+    return response;
   }
 
 }
