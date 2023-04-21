@@ -1,6 +1,7 @@
-package com.example.demo.dto;
+package com.example.tododemo.dto;
 
-import com.example.demo.model.TodoEntity;
+import com.example.tododemo.model.TodoEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
