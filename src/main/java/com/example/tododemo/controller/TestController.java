@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.tododemo.dto.ResponseDTO;
@@ -39,12 +40,12 @@ public class TestController {
     return "Hello World! ID " + testRequestBodyDTO.getId() + " Message : " + testRequestBodyDTO.getMessage();
   }
 
-  @GetMapping("/testResponseDTO")
-  public ResponseDTO<String> testControllerResponseBody() {
+  @GetMapping("/testResponseEntity")
+  public ResponseEntity<?> testControllerResponseBody() {
     List<String> list = new ArrayList<>();
-    list.add("Hello World! I'm ResponseDTO");
+    list.add("Hello World! I'm ResponseEntity");
     ResponseDTO<String> response = ResponseDTO.<String>builder().data(list).build();
-    return response;
+    return ResponseEntity.badRequest().body(response);
   }
 
 }
