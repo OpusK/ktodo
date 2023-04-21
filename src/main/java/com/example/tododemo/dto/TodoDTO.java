@@ -22,4 +22,13 @@ public class TodoDTO {
     this.done = entity.isDone();
     // TODO: UserId w/ authentication
   }
+
+  public static TodoEntity toEntity(final TodoDTO dto) {
+    return TodoEntity.builder()
+        .id(dto.getId())
+        .title(dto.getTitle())
+        .done(dto.isDone())
+        .build();
+  }
+  
 }
