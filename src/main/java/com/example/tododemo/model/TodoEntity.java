@@ -15,12 +15,12 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
-@Table(name = "Todo")
+@Entity  // If you do not specify a name, consider the class's name as a name
+@Table(name = "Todo")  // If you do not add an annotation or specify a name, consider the name of @Entity as a table name
 public class TodoEntity {
-  @Id
-  @GeneratedValue(generator="system-uuid")
-  @GenericGenerator(name="system-uuid", strategy = "uuid")
+  @Id  // Primary key
+  @GeneratedValue(generator="system-uuid")  // For auto ID generate
+  @GenericGenerator(name="system-uuid", strategy = "uuid")  // Specify generator
   private String id;
   private String userId;
   private String title;
