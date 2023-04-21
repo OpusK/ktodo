@@ -1,10 +1,13 @@
 package com.example.tododemo.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.example.tododemo.dto.TestRequestBodyDTO;
 
 @RestController
 @RequestMapping("test")
@@ -25,6 +28,11 @@ public class TestController {
   @GetMapping("/testRequestParam")
   public String testControllerRequestParam(@RequestParam(required = false) int id) {
     return "Hello World! ID " + id;
+  }
+
+  @GetMapping("/testRequestBody")
+  public String testControllerRequestBody(@RequestBody com.example.tododemo.dto.TestRequestBodyDTO testRequestBodyDTO) {
+    return "Hello World! ID " + testRequestBodyDTO.getId() + " Message : " + testRequestBodyDTO.getMessage();
   }
 
 }
